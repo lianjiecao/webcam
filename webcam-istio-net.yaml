@@ -1,0 +1,48 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: webcam-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: webcam
+spec:
+  host: webcam
+  subsets:
+  - name: worker1
+    labels:
+      location: worker1
+  - name: worker2
+    labels:
+      location: worker2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: webcam
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - webcam-gateway
+  http:
+    - route:
+      - destination:
+          host: webcam
+          subset: worker1
+        weight: 20
+      - destination:
+          host: webcam
+          subset: worker2
+        weight: 80

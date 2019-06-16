@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webcam
+spec:
+  type: NodePort
+  ports:
+  - port: 8888
+    name: http
+  selector:
+    app: webcam
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webcam
+  labels:
+    app: webcam
+    tier: main
+spec:
+  replicas: 1
+  selector:   # Defines pods that will be used in this deployment
+    matchLabels:
+      app: webcam
+      tier: main
+  template:   # Specify pod properties
+    metadata:
+      labels:
+        app: webcam
+        tier: main
+    spec:
+      containers:
+      - name: webcam
+        image: gongbaifei/webcam:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8888
+        env:
+          - name: CAM_ADDR
+            value: 192.168.1.108
+          - name: CAM_USR
+            value: "admin"
+          - name: CAM_PASSWD
+            value: "admin"

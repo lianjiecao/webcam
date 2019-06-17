@@ -20,12 +20,12 @@ metadata:
 spec:
   host: webcam
   subsets:
-  - name: worker1
+  - name: discover-2
     labels:
-      location: worker1
-  - name: worker2
+      location: discover-2
+  - name: discover-3
     labels:
-      location: worker2
+      location: discover-3
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -40,9 +40,9 @@ spec:
     - route:
       - destination:
           host: webcam
-          subset: worker1
-        weight: 20
+          subset: discover-2
+        weight: 70
       - destination:
           host: webcam
-          subset: worker2
-        weight: 80
+          subset: discover-3
+        weight: 30

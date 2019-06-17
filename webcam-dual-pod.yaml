@@ -47,7 +47,7 @@ spec:
         - containerPort: 8888
         env:
           - name: CAM_ADDR
-            value: 192.168.1.108
+            value: 192.168.1.11
           - name: CAM_USR
             value: "admin"
           - name: CAM_PASSWD

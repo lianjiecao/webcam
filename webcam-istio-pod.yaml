@@ -15,7 +15,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webcam-worker1
+  name: webcam-discover-2
 #  labels:
 #    app: webcam
 #    version: v1
@@ -24,15 +24,15 @@ spec:
   selector:
     matchLabels:
       app: webcam
-      location: worker1
+      location: discover-2
   template:
     metadata:
       labels:
         app: webcam
-        location: worker1
+        location: discover-2
     spec:
       nodeSelector:
-        kubernetes.io/hostname: k8s-worker-1
+        kubernetes.io/hostname: discover-2
       containers:
       - name: webcam
         image: gongbaifei/webcam:v1
@@ -50,7 +50,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webcam-worker2
+  name: webcam-discover-3
 #  labels:
 #    app: webcam
 #    version: v1
@@ -59,15 +59,15 @@ spec:
   selector:
     matchLabels:
       app: webcam
-      location: worker2
+      location: discover-3
   template:
     metadata:
       labels:
         app: webcam
-        location: worker2
+        location: discover-3
     spec:
       nodeSelector:
-        kubernetes.io/hostname: k8s-worker-2
+        kubernetes.io/hostname: k8s-discover-3
       containers:
       - name: webcam
         image: gongbaifei/webcam:v1
@@ -76,7 +76,7 @@ spec:
         - containerPort: 8888
         env:
           - name: CAM_ADDR
-            value: 192.168.1.108
+            value: 192.168.1.11
           - name: CAM_USR
             value: "admin"
           - name: CAM_PASSWD

@@ -21,3 +21,15 @@ We have 3 EdgeLine servers (GL20, EL300 and EL1000) running Kubernetes and Istio
 7. Now you can see you picture and detection results of your face.
 
 ## Problem statement
+In the section above, you have created a K8s deployment with one pod running on node discover-3. However, if failure happens (e.g., server failure and network failure), you may lose service of the webcam application. We want you to come up with a solution to improve the high availibility of the webcam deployment so that you webcam deployment still functions when part of the server or network fails.
+
+## Hint
+1. Try to add redundancy to your deployment. For instance, you can create multiple pods in you deployment and assign them to different worker nodes.
+2. Try to control the ingress workload traffic using Istio (already installed) and redirect it properly when failure happens.
+
+## Reading
+* What is Kubernetes? https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
+* Understanding Kubernetes Objects, https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/
+* Introduction to YAML: Creating a Kubernetes deployment, https://www.mirantis.com/blog/introduction-to-yaml-creating-a-kubernetes-deployment/
+* A Crash Course For Running Istio, https://medium.com/namely-labs/a-crash-course-for-running-istio-1c6125930715
+* Tutorial: Blue/Green Deployments with Kubernetes and Istio, https://thenewstack.io/tutorial-blue-green-deployments-with-kubernetes-and-istio/

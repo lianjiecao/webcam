@@ -33,7 +33,10 @@ kubectl cluster-info
 # Get node info
 kubectl get nodes -o wide
 # Create namespace with labels
-# Add/delete label to namespace
+kubectl create namespace webcam
+kubectl label namespace webcam istio-injection=enabled
+kubectl label namespace webcam istio-injection-
+kubectl get namespace --show-labels
 # Create K8s objects, services, etc
 kubectl apply -f webcam-single-pod.yaml
 # Delete K8s objects, services, etc
@@ -48,7 +51,8 @@ kubectl log -f webcam -n webcam
 
 ## Istio
 ```bash
-# Create yaml with sidecar manually
+# Create yaml with sidecar manually, if auto label injection not enabled
+istioctl kube-inject -f webcam-single-pod.yaml | kubectl apply -f -
 # Get external IP
 kubectl get pod -l istio=ingressgateway -n istio-system -o jsonpath='{.items[0].status.hostIP}'
 # Get port number

@@ -1,6 +1,6 @@
 # Webcam
 
-Webcam application created for HPE Discover 2019 Las Vegas
+Hack Shack challenge created for HPE Discover 2019 at Las Vegas.
 
 ## Setup
 We have 3 EdgeLine servers (GL20, EL300 and EL1000) running Kubernetes and Istio.
@@ -26,6 +26,12 @@ In the section above, you have created a K8s deployment with one pod running on 
 ## Hint
 1. Try to add redundancy to your deployment. For instance, you can create multiple pods in you deployment and assign them to different worker nodes.
 2. Try to control the ingress workload traffic using Istio (already installed) and redirect it properly when failure happens.
+
+## Solution
+```kubectl apply -f webcam-single-pod.yaml``` - Deploy one pod of ```webcam``` app.
+```kubectl apply -f webcam-dual-pod.yaml``` - Deploy two replicas of ```webcam``` app and assign them on two different nodes.
+```kubectl apply -f webcam-istio-pod.yaml``` - Deploy two pods of ```webcam``` app and specify two different worker nodes for each pod.
+```kubectl apply -f webcam-istio-net.yaml``` - Create Istio services (gateway, destination rules and virtual services) to control the ingress traffic.
 
 ## Reading
 * What is Kubernetes? https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/

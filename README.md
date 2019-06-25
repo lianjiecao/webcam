@@ -28,10 +28,10 @@ In the section above, you have created a K8s deployment with one pod running on 
 2. Try to control the ingress workload traffic using Istio (already installed) and redirect it properly when failure happens.
 
 ## Solution
-```kubectl apply -f webcam-single-pod.yaml``` - Deploy one pod of ```webcam``` app.
-```kubectl apply -f webcam-dual-pod.yaml``` - Deploy two replicas of ```webcam``` app and assign them on two different nodes.
-```kubectl apply -f webcam-istio-pod.yaml``` - Deploy two pods of ```webcam``` app and specify two different worker nodes for each pod.
-```kubectl apply -f webcam-istio-net.yaml``` - Create Istio services (gateway, destination rules and virtual services) to control the ingress traffic.
+- ```kubectl apply -f webcam-single-pod.yaml``` - Deploy one pod of ```webcam``` app.
+- ```kubectl apply -f webcam-dual-pod.yaml``` - Deploy two replicas of ```webcam``` app and assign them on two different nodes.
+- ```kubectl apply -f webcam-istio-pod.yaml``` - Deploy two pods of ```webcam``` app and specify two different worker nodes for each pod.
+- ```kubectl apply -f webcam-istio-net.yaml``` - Create Istio services (gateway, destination rules and virtual services) to control the ingress traffic.
 
 ## Reading
 * What is Kubernetes? https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/

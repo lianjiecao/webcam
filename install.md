@@ -195,6 +195,8 @@ Then you can join any number of worker nodes by running the following on each as
 kubeadm join 192.168.1.1:6443 --token y8ksjd.f8jjid8djl6p2upn \
     --discovery-token-ca-cert-hash sha256:bd85912f36830a77c78cf264c8c858332210645c3929fb029c3c68ac3f1f5ed6
 ```
+* Note that here we use Flannel, but there are (others available)[https://kubernetes.io/docs/concepts/cluster-administration/networking/]. For ```Flannel``` to work correctly, you must pass ```--pod-network-cidr=10.244.0.0/16``` to ```kubeadm init```.
+
 Run the following command to make sure all pods are started successfully.
 ```bash
 $ kubectl get pods --all-namespaces

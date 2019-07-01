@@ -121,7 +121,7 @@ Then we need to configure K8s master node and worker node separately.
 #### Master node
 Run the following command to initialize the master node and install ```Flannel``` CNI:
 ```bash
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.1.1 | tee kubeadm_init.log
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/16 --apiserver-advertise-address=192.168.1.1 | tee kubeadm_init.log
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
@@ -196,6 +196,7 @@ kubeadm join 192.168.1.1:6443 --token y8ksjd.f8jjid8djl6p2upn \
     --discovery-token-ca-cert-hash sha256:bd85912f36830a77c78cf264c8c858332210645c3929fb029c3c68ac3f1f5ed6
 ```
 * Note that here we use Flannel, but there are (others available)[https://kubernetes.io/docs/concepts/cluster-administration/networking/]. For ```Flannel``` to work correctly, you must pass ```--pod-network-cidr=10.244.0.0/16``` to ```kubeadm init```.
+* By default, ```kubeadm init``` use ```10.96.0.0/12``` for ```--service-cidr```. It is better to set this in accordance with ```noproxy``` setting. Otherwise you may running into networking problems between services and pods.
 
 Run the following command to make sure all pods are started successfully.
 ```bash

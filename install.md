@@ -98,7 +98,7 @@ $ docker run hello-world
 You may also need to setup proxy if running inside HPE network. Add the following to ```/etc/systemd/system/docker.service.d/http-proxy.conf``` and restart docker ```sudo systemctl daemon-reload && sudo systemctl restart docker```:
 ```bash
 [Service]
-Environment="HTTP_PROXY=http://web-proxy.labs.hpecorp.net:8080/" "NO_PROXY=localhost,127.0.0.1,192.168.1.0/24,10.96.0.0/16,10.240.10.0/16"
+Environment="HTTP_PROXY=http://web-proxy.labs.hpecorp.net:8080/" "HTTPS_PROXY=http://web-proxy.labs.hpecorp.net:8080/"  "NO_PROXY=localhost,127.0.0.1,192.168.1.0/24,10.96.0.0/16,10.240.10.0/16"
 ```
 
 ### Kubernetes

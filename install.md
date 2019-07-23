@@ -198,6 +198,8 @@ kubeadm join 192.168.1.1:6443 --token y8ksjd.f8jjid8djl6p2upn \
 * Note that here we use Flannel, but there are (others available)[https://kubernetes.io/docs/concepts/cluster-administration/networking/]. For ```Flannel``` to work correctly, you must pass ```--pod-network-cidr=10.244.0.0/16``` to ```kubeadm init```.
 * By default, ```kubeadm init``` use ```10.96.0.0/12``` for ```--service-cidr```. It is better to set this in accordance with ```noproxy``` setting. Otherwise you may running into networking problems between services and pods.
 
+* In case you lost the token for joining a worker, run this ```sudo kubeadm token create --print-join-command``` to retrieve the join command.
+
 Run the following command to make sure all pods are started successfully.
 ```bash
 $ kubectl get pods --all-namespaces

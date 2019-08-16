@@ -41,19 +41,19 @@ And run ```sudo hostnamectl set-hostname discover-X``` on each machine.
 If the machines are running inside HPE network, we need to configure proxy.
 Add the following to ```/etc/environment```:
 ```bash
-http_proxy=http://web-proxy.labs.hpecorp.net:8080
-HTTP_PROXY=http://web-proxy.labs.hpecorp.net:8080
-https_proxy=http://web-proxy.labs.hpecorp.net:8080
-HTTPS_PROXY=http://web-proxy.labs.hpecorp.net:8080
+http_proxy=http://web-proxy-pa.labs.hpecorp.net:8088
+HTTP_PROXY=http://web-proxy-pa.labs.hpecorp.net:8088
+https_proxy=http://web-proxy-pa.labs.hpecorp.net:8088
+HTTPS_PROXY=http://web-proxy-pa.labs.hpecorp.net:8088
 no_proxy=localhost,127.0.0.1,192.168.0.0/16,10.96.0.0/16,10.244.0.0/16,svc,.cluster.local
 NO_PROXY=localhost,127.0.0.1,192.168.0.0/16,10.96.0.0/16,10.244.0.0/16,svc,.cluster.local
 ```
 In case different tools may pickup proxy information from different configuration files, we also need to add the following to ```~/.bashrc``` and ```/root/.bashrc/```:
 ```
-export http_proxy=http://web-proxy.labs.hpecorp.net:8080
-export HTTP_PROXY=http://web-proxy.labs.hpecorp.net:8080
-export https_proxy=http://web-proxy.labs.hpecorp.net:8080
-export HTTPS_PROXY=http://web-proxy.labs.hpecorp.net:8080
+export http_proxy=http://web-proxy-pa.labs.hpecorp.net:8088
+export HTTP_PROXY=http://web-proxy-pa.labs.hpecorp.net:8088
+export https_proxy=http://web-proxy-pa.labs.hpecorp.net:8088
+export HTTPS_PROXY=http://web-proxy-pa.labs.hpecorp.net:8088
 export no_proxy=localhost,127.0.0.1,192.168.0.0/16,10.96.0.0/16,10.244.0.0/16,svc,.cluster.local
 export NO_PROXY=localhost,127.0.0.1,192.168.0.0/16,10.96.0.0/16,10.244.0.0/16,svc,.cluster.local
 ```
